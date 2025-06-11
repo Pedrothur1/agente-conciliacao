@@ -4,7 +4,7 @@ def padroniza_base_cliente(path):
     df = pd.read_excel(path)
     df_pad = pd.DataFrame()
     df_pad['Data'] = pd.to_datetime(df['Data movimento'], dayfirst=True, errors='coerce')
-    df_pad['Conta'] = df['Conta bancária'].astype(str).strip()
+    df_pad['Conta'] = df['Conta bancária'].astype(str).str.strip()
     df_pad['Valor'] = df['Valor (R$)'].astype(float)
     df_pad['Tipo'] = df['Tipo da operação'].strip()
     return df_pad
